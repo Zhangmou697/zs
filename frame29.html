@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 29 - 露筋</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame29.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame29">
+            <img src="../.figma/image/mo5lxfuh-woj7n6v.png" class="image21" />
+            <img src="../.figma/image/mo5lxfuh-rlqej2e.png" class="a9E220Ec1A88Ff6Ff432" />
+            
+            <p class="text">露筋</p>
+            <p class="text2">文字介绍</p>
+            <div class="ellipse178"></div>
+            
+            <img src="../.figma/image/mo5lxfuh-fn6dz6z.png" class="b721F548859Ac65E1149" />
+            
+            <!-- Play button overlay -->
+            <div class="play-btn">
+                <img src="../.figma/image/mo5lxfuf-bjix09p.svg" class="group132" />
+            </div>
+
+            <p class="text3">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;南宋露筋，妙在“釉”。石灰碱釉的出现，让瓷釉可厚施至毫米以上。匠人
+                <br /><br />
+                刻划莲瓣时，特意让花瓣中脊微微隆起，形成立体的棱线。施以厚釉后，凸起
+                <br /><br />
+                的脊线处釉料流散变薄，而凹陷处釉层堆积。烧成那一刻，造化显现：凸脊因
+                <br /><br />
+                釉薄透出胎骨的浅色，如筋骨隐隐浮现，这便是“露筋”或“出筋”。凹处则釉厚如
+                <br /><br />
+                玉，青翠温润。一浅一深，一透一掩。凸脊清晰挺秀，积釉丰腴欲滴。纹样不
+                <br /><br />
+                再独立于器，而与厚釉相互成就，与碗形浑然一体。露筋工艺，让南宋瓷器于
+                <br /><br />
+                含蓄中见筋骨，于温润中藏力度。
+            </p>
+        </div>
+        
+        <!-- Global Fixed Navigation Bar -->
+        <div class="group115 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text4 nav-text">首页</p>
+                    <div class="line50 nav-line"></div>
+                    <p class="text5 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text6 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text7 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text8 nav-text">传承之新</p>
+                    <img src="../.figma/image/screenshot_1103_770.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

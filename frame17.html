@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 17 - 宋元时期</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame17.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame17">
+            <!-- Background Images -->
+            <img src="../.figma/image/mo5yj1aw-ge8yj3u.png" class="image7" />
+            <img src="../.figma/image/mo5yj1aw-b4eatyh.png" class="a9E220Ec1A88Ff6Ff432" />
+            
+            <!-- Horizontal Line and Dots -->
+            <div class="line38"></div>
+            
+            <!-- Text Content -->
+            <p class="text">宋元时期</p>
+            <div class="ellipse134"></div>
+            <p class="text2">敦煌莫高窟莲花纹花砖</p>
+            <div class="ellipse139"></div>
+            <p class="text5">
+                <span class="text3">渊源:</span>
+                <span class="text4">
+                    莲瓣纹已从佛教主题扩展为世俗化的吉祥纹样，与文人士大夫的审美相结合。<br /><br />
+                    特色表现为莲瓣细长瘦劲，瓣面常刻划出凸起的中脊，层次丰富，立体感强，刀法流畅<br /><br />犀利。
+                </span>
+            </p>
+            
+            <!-- Left side images -->
+            <img src="../.figma/image/mo5yj1aw-kgedxtr.png" class="d87B447Ea43Bebb86642" />
+            <img src="../.figma/image/mo5yj1aw-3s2fb26.png" class="a174Ff6Cefeb69D1D939" />
+            <img src="../.figma/image/screenshot_2477_83.png" class="f419375561A76E2705C4" />
+            
+            <!-- Next Arrow -->
+            <img src="../.figma/image/mo5yj1au-d9q2drf.png" class="arrow12" />
+        </div>
+        <!-- Navigation Bar Moved Outside Frame for Absolute Fixing -->
+        <div class="group110 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text8 nav-text">首页</p>
+                    <div class="line50 nav-line"></div>
+                    <p class="text9 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text10 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text11 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text12 nav-text">传承之新</p>
+                    <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.frame17');
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromLeft = urlParams.get('from') === 'left';
+            
+            // Set initial state
+            container.style.opacity = '0';
+            // If coming from frame 16 (left), slide in from right. Otherwise (from frame 18), slide in from left.
+            container.style.transform = fromLeft ? 'translateX(100%)' : 'translateX(-100%)';
+            container.style.transition = 'none';
+
+            // Trigger animation on next frame
+            requestAnimationFrame(() => {
+                container.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                container.style.opacity = '1';
+                container.style.transform = 'translateX(0)';
+                
+                // Add staggered animation to elements
+                setTimeout(() => {
+                    const elementsToAnimate = [
+                        '.text',
+                        '.ellipse134',
+                        '.text2',
+                        '.ellipse139',
+                        '.text5 .text3',
+                        '.text5 .text4'
+                    ];
+                    
+                    elementsToAnimate.forEach((selector, index) => {
+                        const el = document.querySelector(selector);
+                        if (el) {
+                            el.style.animationDelay = `${index * 0.15}s`;
+                            el.classList.add('animate-fade-right');
+                        }
+                    });
+                }, 400); // Start staggered animation halfway through page transition
+            });
+        });
+
+        // Wheel and touch navigation
+        let isNavigating = false;
+        
+        window.addEventListener('wheel', (e) => {
+            // Prevent default scroll behavior
+            e.preventDefault();
+            
+            if (isNavigating) return;
+
+            const container = document.querySelector('.frame17');
+
+            if (e.deltaY > 0 || e.deltaX > 0) {
+                // Scroll down/right -> Pan Left to Frame 18
+                isNavigating = true;
+                container.style.transform = 'translateX(-100%)';
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame18.html?from=left';
+                }, 800);
+            } else if (e.deltaY < 0 || e.deltaX < 0) {
+                // Scroll up/left -> Pan Right back to Frame 16
+                isNavigating = true;
+                container.style.transform = 'translateX(100%)';
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame16.html?from=right';
+                }, 800);
+            }
+        }, { passive: false });
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        window.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', (e) => {
+            if (isNavigating) return;
+
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            
+            const container = document.querySelector('.frame17');
+
+            if (Math.abs(diffX) > 50 || Math.abs(diffY) > 50) {
+                if (diffX > 0 || diffY > 0) {
+                    // Swipe left/up -> Frame 18
+                    isNavigating = true;
+                    container.style.transform = 'translateX(-100%)';
+                    container.style.opacity = '0';
+                    setTimeout(() => {
+                        window.location.href = 'frame18.html?from=left';
+                    }, 800);
+                } else {
+                    // Swipe right/down -> Frame 16
+                    isNavigating = true;
+                    container.style.transform = 'translateX(100%)';
+                    container.style.opacity = '0';
+                    setTimeout(() => {
+                        window.location.href = 'frame16.html?from=right';
+                    }, 800);
+                }
+            }
+        }, { passive: true });
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

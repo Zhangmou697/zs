@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 14 - 龙泉窑刻缠枝花卉纹大葫芦瓶</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame14.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame14">
+            <img src="../.figma/image/mo5qrnba-9os6c23.png" class="a9E220Ec1A88Ff6Ff432" />
+            <img src="../.figma/image/mo5qrnba-ikykaxa.png" class="image20" />
+            
+            <p class="text">龙泉窑刻缠枝花卉纹大葫芦瓶</p>
+            <p class="text3">工艺/</p>
+            <p class="text4">刻花</p>
+            <p class="text5">缠枝纹</p>
+            <p class="text6">纹样/</p>
+            <p class="text2">此葫芦瓶，器形硕大，气势恢宏，为明初龙泉窑鼎盛时期之罕见重器。葫芦瓶因谐音“福禄”，自古为吉祥重器。本品造型比例精准，是明初宫廷陈设瓷的典型代表。瓶身呈葫芦造型，小口直颈，上腹圆鼓，下腹饱满，束腰过渡自然，线条流畅而富有张力，显皇家气象。通体施龙泉窑典型青釉，釉色青翠莹润，如翡翠凝脂，釉层肥厚。瓶身通体采用减地刻花工艺，以深刀刻出缠枝花卉纹，花卉枝叶舒展，枝蔓婉转流畅，布局疏密有致，层次分明。颈部刻锦地纹与莲纹，下腹则同样以满饰的缠枝牡丹纹为主，刀工犀利，线条遒劲，纹饰在青釉映衬下若隐若现，立体感十足。</p>
+            
+            <img src="../.figma/image/mo5qrnba-brrk6jw.png" class="a6240A9798B896D428B1 video-thumbnail-14" style="cursor: pointer; z-index: 1; transition: opacity 0.3s ease;" />
+            <img src="../.figma/image/screenshot_1692_215.png" class="group139 video-play-btn-14" />
+            <video class="video-player-14" src="videos/demo14.mp4.mp4" controls style="display: none;"></video>
+
+        
+            <a href="frame32.html" class="nav-link-bottom">
+                <span>Return to homepage</span>
+                </a>
+        </div>
+    </div>
+
+    <!-- Global Fixed Navigation Bar -->
+    <div class="group111 nav-bar">
+        <div class="rectangle314"></div>
+        <div class="autoWrapper nav-content">
+            <div class="nav-left">
+                <p class="text7 nav-text">首页</p>
+                <div class="line50 nav-line"></div>
+                <p class="text9 nav-text">展览馆</p>
+            </div>
+            <div class="nav-right">
+                <p class="text8 nav-text">纹饰之美</p>
+                <div class="line51 nav-line"></div>
+                <p class="text10 nav-text">工艺之蕴</p>
+                <div class="line52 nav-line"></div>
+                <p class="text11 nav-text">传承之新</p>
+                <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.frame14');
+            container.style.opacity = '0';
+            requestAnimationFrame(() => {
+                container.style.transition = 'opacity 0.8s ease';
+                container.style.opacity = '1';
+            });
+        });
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+    <script>
+        // 视频播放逻辑
+        document.addEventListener('DOMContentLoaded', () => {
+            const playBtn = document.querySelector('.video-play-btn-14');
+            const thumbnail = document.querySelector('.video-thumbnail-14');
+            const video = document.querySelector('.video-player-14');
+
+            function playVideo() {
+                // 隐藏缩略图和播放按钮
+                if(playBtn) playBtn.style.opacity = '0';
+                if(thumbnail) thumbnail.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if(playBtn) playBtn.style.display = 'none';
+                    if(thumbnail) thumbnail.style.display = 'none';
+                    // 显示视频并播放
+                    if(video) {
+                        video.style.display = 'block';
+                        video.play().catch(e => {
+                            console.log("视频播放失败，请检查视频路径是否正确：", e);
+                        });
+                    }
+                }, 300);
+            }
+
+            if (playBtn && thumbnail && video) {
+                playBtn.addEventListener('click', playVideo);
+                thumbnail.addEventListener('click', playVideo);
+            }
+        });
+    </script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frame 7</title>
+  <link rel="stylesheet" href="css/frame7.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="viewport-wrapper">
+    <div class="page-container">
+<div class="frame7">
+      <img src="assets/image/mnzt4ck0-82s02a3.png" alt="" aria-hidden="true" class="image19">
+      <img
+        src="assets/image/mnzt4ck0-9wv3ezj.png" alt="" aria-hidden="true"
+        class="a9E220Ec1A88Ff6Ff432"
+     >
+      <p class="text">刻划花</p>
+      <p class="text2">文字介绍</p>
+      <div class="ellipse160"></div>
+      <div class="rectangle328"></div>
+      <p class="text3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北宋刻划花，核心在“刀”。匠人以斜刀直入干燥的素胎，刻出莲瓣的宽粗轮廓,刀锋起落之间，线条深浅有致、粗犷有力，构成纹样的主骨架。紧接着，在轮廓内部填饰细密整齐的篦纹。粗线与细线分处不同平面：深刻的主线如筋骨凸起，细密的篦纹如血肉填充。一粗一细，一高一低，层次顿生。光线流转时，两层纹饰交相辉映。碗外壁莲瓣饱满，碗内壁浪涛汹涌，内外呼应。刻划花以刀为笔，在素胎上绘出气势连贯的纹饰长卷，展现了北宋瓷器对刀法精准与空间层次的极致追求。</p>
+      <p class="text4">露筋</p>
+      <p class="text5">文字介绍</p>
+      <div class="ellipse178"></div>
+      <div class="rectangle341"></div>
+      <p class="text6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;南宋露筋，妙在“釉”。石灰碱釉的出现，让瓷釉可厚施至毫米以上。匠人刻划莲瓣时，特意让花瓣中脊微微隆起，形成立体的棱线。施以厚釉后，凸起的脊线处釉料流散变薄，而凹陷处釉层堆积。烧成那一刻，造化显现：凸脊因釉薄透出胎骨的浅色，如筋骨隐隐浮现，这便是“露筋”或“出筋”。凹处则釉厚如玉，青翠温润。一浅一深，一透一掩。凸脊清晰挺秀，积釉丰腴欲滴。纹样不再独立于器，而与厚釉相互成就，与碗形浑然一体。露筋工艺，让南宋瓷器于含蓄中见筋骨，于温润中藏力度。&nbsp;</p>
+      <p class="text7">印花</p>
+      <p class="text8">文字介绍</p>
+      <div class="ellipse180"></div>
+      <div class="rectangle343"></div>
+      <p class="text9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;元代印花，重在“模”。匠人先制作阴刻花纹的模范，在未干的坯体上印制，使纹饰凸起于胎面——缠枝牡丹枝叶舒展，线条挺拔有力、转折利落。这种“一印成形”的工艺，让纹样得以高效复制，却丝毫不失工整。施釉烧成后，凸起的阳纹线条顶端釉薄，同样呈现露筋效果，图案格外醒目。布局上讲究严谨对称:主纹缠枝牡丹居中舒展，辅纹环绕有序，繁而不乱、主次分明。从双环耳到腹部，印花工艺以模印为宗，将秩序之美凝固于器物之上，体现了元代瓷器装饰高度程式化、规范化的艺术风格。</p>
+      <div class="group114">
+        <div class="rectangle314"></div>
+        <div class="autoWrapper">
+          <p class="text10">首页</p>
+          <div class="line50"></div>
+          <p class="text11">展览馆</p>
+          <p class="text12">纹饰之美</p>
+          <div class="line51"></div>
+          <p class="text13">工艺之蕴</p>
+          <div class="line52"></div>
+          <p class="text14">传承之新</p>
+          <img src="../.figma/image/screenshot_1118_12.png" alt="" aria-hidden="true" id="nav-audio-btn" style="cursor: pointer;" class="eeee1">
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

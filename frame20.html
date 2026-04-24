@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 20 - 生命永恒 吉祥延续</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame20.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame20">
+            <img src="../.figma/image/mo5k7pgc-eopmkwl.png" class="image5" />
+            <img src="../.figma/image/mo5k7pgc-hz9lvf9.png" class="a9E220Ec1A88Ff6Ff432" />
+            
+            <p class="text2">生命永恒</p>
+            <p class="text3">吉祥延续</p>
+            
+            <p class="text4">
+                缠枝纹最根本的寓意，源于古人对“藤蔓植物”的观察：藤曼四季常青、攀援生长，象征“生命力旺盛”；缠绕循环的结构，象征“时间永恒、世代延续”。
+            </p>
+            
+            <p class="text5">“绵绵瓜瓞，民之初生”。</p>
+            
+            <img src="../.figma/image/mo5k7pgc-gjtwwe9.png" class="a5D44Fbd320C65F6Dbdf" />
+            
+            <!-- Adding a visual wrapper for the "return" interaction based on the text prompt -->
+            <div class="return-btn">
+                <p class="text">返回</p>
+            </div>
+        </div>
+        
+        <!-- Global Fixed Navigation Bar -->
+        <div class="group113 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text6 nav-text">首页</p>
+                    <div class="line50 nav-line"></div>
+                    <p class="text7 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text8 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text9 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text10 nav-text">传承之新</p>
+                    <!-- Fallback for icon if missing -->
+                    <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry animation (sliding up from bottom, as requested by '向下滑动' on previous frame)
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.frame20');
+            
+            // Coming from frame 26 (scrolling down -> sliding from bottom)
+            container.style.transform = 'translateY(100%)';
+            
+            requestAnimationFrame(() => {
+                container.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                container.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Music toggle
+        document.querySelectorAll('.eeee1').forEach(icon => {
+            icon.style.cursor = 'pointer';
+            icon.addEventListener('click', () => {
+                if (icon.style.opacity === '0.5') {
+                    icon.style.opacity = '1';
+                } else {
+                    icon.style.opacity = '0.5';
+                }
+            });
+        });
+
+        // Navigate back to index
+        document.querySelectorAll('.text6').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => {
+                window.location.href = '../home.html';
+            });
+        });
+
+        // Navigate to exhibition gallery
+        document.querySelectorAll('.text7').forEach(p => {
+            p.style.cursor = 'pointer';
+            p.addEventListener('click', () => {
+                window.location.href = 'frame31.html';
+            });
+        });
+
+        // Interactive Return Button Logic
+        document.querySelector('.return-btn').addEventListener('click', () => {
+            const container = document.querySelector('.frame20');
+            // Animate out back to the beginning of the horizontal flow, or back to index
+            // Assuming going back to the start of this section (Frame 15 or Index) based on typical museum flows
+            // For now, let's trigger a slide out and return to the main timeline/exhibition or frame15
+            container.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                window.location.href = 'frame15.html'; // Default back to start of this sequence
+            }, 800);
+        });
+        
+        // Navigation on scroll
+        let isNavigating = false;
+        window.addEventListener('wheel', (e) => {
+            if (isNavigating) return;
+            
+            const container = document.querySelector('.frame20');
+            
+            if (e.deltaY < 0) { // Scrolling up -> Go back to frame 26 (slide down to reveal frame above)
+                isNavigating = true;
+                container.style.transform = 'translateY(100%)';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame26.html?from=frame20'; // Technically going back
+                }, 800);
+            } 
+            // Scrolling down -> Might just return, or do nothing as it's the end of this sequence
+        }, { passive: false });
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

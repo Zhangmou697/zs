@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 6 - 莲瓣纹原型</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame6.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame6">
+            <!-- Background Images -->
+            <img src="../.figma/image/mo5t4mux-vb901i9.png" class="image14" />
+            <img src="../.figma/image/mo5t4mux-gaa8d1w.png" class="a9E220Ec1A88Ff6Ff432" />
+
+            <!-- Main Content Area -->
+            <p class="a2000">2000+</p>
+            <p class="text2">莲瓣纹</p>
+            <p class="yEarsago">YEARS AGO</p>
+
+            <!-- Horizontal Line and Dots -->
+            <div class="line36"></div>
+            <div class="ellipse130"></div>
+            
+            <p class="text">原型</p>
+            
+            <!-- Bullet Point Content -->
+            <div class="ellipse131"></div>
+            <p class="text5">
+                <span class="text3">渊源:</span>
+                <span class="text4">由莲花花朵的花瓣形态变化而来，是以荷花<br /><br />为实体模仿对象经艺术提炼之后的结果。</span>
+            </p>
+
+            <p class="text7">“荷，芙渠。其茎茄，其叶蕸，其本蔤，其华菡萏，其实莲，其根藕，其中菂，菂中薏。”</p>
+
+            <!-- Right Side Image -->
+            <img src="../.figma/image/mo5t4mux-zw411jc.png" class="bb0Dab2481477A7179Bf" />
+            <p class="text6">莲花池中自然生长的莲花</p>
+
+            <!-- Bottom Arrow -->
+            <img src="../.figma/image/mo5t4muw-97s2nky.png" class="arrow11" />
+        </div>
+        <!-- Navigation Bar Moved Outside Frame for Absolute Fixing -->
+        <div class="group110 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text8 nav-text">首页</p>
+                    <div class="line50 nav-line"></div>
+                    <p class="text9 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text10 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text11 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text12 nav-text">传承之新</p>
+                    <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.frame6');
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromRight = urlParams.get('from') === 'right';
+            
+            // Start state
+            container.style.opacity = '0';
+            if (fromRight) {
+                container.style.transform = 'translateX(-100%)';
+            } else {
+                container.style.transform = 'translateY(-100%)';
+            }
+            container.style.transition = 'none';
+
+            // Trigger animation on next frame
+            requestAnimationFrame(() => {
+                container.style.transition = 'all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                container.style.opacity = '1';
+                container.style.transform = fromRight ? 'translateX(0)' : 'translateY(0)';
+                
+                // Add staggered animation to elements
+                setTimeout(() => {
+                    const elementsToAnimate = [
+                        '.a2000',
+                        '.text2',
+                        '.yEarsago',
+                        '.text',
+                        '.ellipse131',
+                        '.text5 .text3',
+                        '.text5 .text4',
+                        '.text7'
+                    ];
+                    
+                    elementsToAnimate.forEach((selector, index) => {
+                        const el = document.querySelector(selector);
+                        if (el) {
+                            el.style.animationDelay = `${index * 0.15}s`;
+                            el.classList.add('animate-fade-right');
+                        }
+                    });
+                }, 400); // Start staggered animation halfway through page transition
+            });
+        });
+
+        // Wheel and touch navigation
+        let isNavigating = false;
+        
+        window.addEventListener('wheel', (e) => {
+            // Prevent default scroll behavior
+            e.preventDefault();
+            
+            if (isNavigating) return;
+
+            const container = document.querySelector('.frame6');
+
+            if (e.deltaY > 0 || e.deltaX > 0) {
+                // Scroll down/right -> Pan Left to Frame 16
+                isNavigating = true;
+                container.style.transform = 'translateX(-100%)';
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame16.html?from=left';
+                }, 800);
+            }
+        }, { passive: false });
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        window.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', (e) => {
+            if (isNavigating) return;
+
+            const touchEndX = e.changedTouches[0].screenX;
+            const touchEndY = e.changedTouches[0].screenY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            
+            const container = document.querySelector('.frame6');
+
+            if (Math.abs(diffX) > 50 || Math.abs(diffY) > 50) {
+                if (diffX > 0 || diffY > 0) {
+                    // Swipe left/up -> Frame 16
+                    isNavigating = true;
+                    container.style.transform = 'translateX(-100%)';
+                    container.style.opacity = '0';
+                    setTimeout(() => {
+                        window.location.href = 'frame16.html?from=left';
+                    }, 800);
+                }
+            }
+        }, { passive: true });
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

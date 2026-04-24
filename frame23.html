@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 23 - 魏晋南北朝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame23.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame23">
+            <img src="../.figma/image/mo5jsg8y-es9wamr.png" class="image10" />
+            <img src="../.figma/image/mo5jsg8y-n7qop2v.png" class="a9E220Ec1A88Ff6Ff432" />
+            
+            <p class="text">魏晋南北朝</p>
+            <p class="cEntury">CENTURY</p>
+            
+            <div class="line50"></div>
+            <div class="ellipse143"></div>
+            <div class="ellipse144"></div>
+            
+            <p class="a3Th10th">3th-10th</p>
+            
+            <p class="text4">
+                <span class="text2">渊源:</span>
+                <span class="text3">佛教艺术的东传，忍冬纹、卷草纹大量介入中原装饰体系。<br /><br />以莲花为主体，枝叶呈S形骨架向两侧婉转延伸<br /><br />忍冬纹的传入打破了早期单纯对称的构图，使枝蔓动态化、旋律化。</span>
+            </p>
+            
+            <p class="text5">构图方式发生变化</p>
+            
+            <img src="../.figma/image/mo5jsg8z-3juk6to.png" class="c7D6Ec18E9C9E358Fc7E" />
+            <img src="../.figma/image/mo5jsg8z-942vj56.png" class="a8968A1313A0396D8916" />
+            <img src="../.figma/image/mo5jsg8x-tpxtiwg.png" class="arrow16" />
+        </div>
+        
+        <!-- Global Fixed Navigation Bar -->
+        <div class="group112 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text8 nav-text">首页</p>
+                    <div class="line502 nav-line"></div>
+                    <p class="text9 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text10 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text11 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text12 nav-text">传承之新</p>
+                    <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry animation (sliding from right to left, simulating camera panning right)
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.frame23');
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const from = urlParams.get('from');
+
+            if (from === 'frame24') {
+                // If coming back from frame24 (which is further right), we slide from left
+                container.style.transform = 'translateX(-100%)';
+            } else {
+                // Default entry from frame22 (panning right -> page slides from right)
+                container.style.transform = 'translateX(100%)';
+            }
+            
+            requestAnimationFrame(() => {
+                container.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                container.style.transform = 'translateX(0)';
+                
+                // Add staggered animation to elements
+                setTimeout(() => {
+                    const elementsToAnimate = [
+                        '.text3',
+                        '.text',
+                        '.cEntury',
+                        '.a3Th10th',
+                        '.ellipse143',
+                        '.text4 .text2',
+                        '.text4 .text3'
+                    ];
+                    
+                    elementsToAnimate.forEach((selector, index) => {
+                        const el = document.querySelector(selector);
+                        if (el) {
+                            el.style.animationDelay = `${index * 0.15}s`;
+                            el.classList.add('animate-fade-right');
+                        }
+                    });
+                }, 400); // Start staggered animation halfway through page transition
+            });
+        });
+
+        // Music toggle
+        document.querySelectorAll('.eeee1').forEach(icon => {
+            icon.style.cursor = 'pointer';
+            icon.addEventListener('click', () => {
+                if (icon.style.opacity === '0.5') {
+                    icon.style.opacity = '1';
+                } else {
+                    icon.style.opacity = '0.5';
+                }
+            });
+        });
+
+        // Navigate back to index
+        document.querySelectorAll('.text8').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => {
+                window.location.href = '../home.html';
+            });
+        });
+
+        // Navigate to exhibition gallery
+        document.querySelectorAll('.text9').forEach(p => {
+            p.style.cursor = 'pointer';
+            p.addEventListener('click', () => {
+                window.location.href = 'frame31.html';
+            });
+        });
+        
+        // Navigation on scroll
+        let isNavigating = false;
+        window.addEventListener('wheel', (e) => {
+            if (isNavigating) return;
+            
+            const container = document.querySelector('.frame23');
+            
+            if (e.deltaY < 0) { // Scrolling up -> Go back to frame 22 (slide out to right)
+                isNavigating = true;
+                container.style.transform = 'translateX(100%)';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame22.html?from=frame23';
+                }, 800);
+            } else if (e.deltaY > 0) { // Scrolling down -> Go to next frame (Frame 24)
+                isNavigating = true;
+                container.style.transform = 'translateX(-100%)';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame24.html?from=frame23';
+                }, 800);
+            }
+        }, { passive: false });
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>

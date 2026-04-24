@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 28 - 刻划花</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame28.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame28">
+            <img src="../.figma/image/mo5lwku9-1l6miz8.png" class="image20" />
+            <img src="../.figma/image/mo5lwku9-esywlpj.png" class="a9E220Ec1A88Ff6Ff432" />
+            
+            <p class="text">刻划花</p>
+            <p class="text2">文字介绍</p>
+            <svg class="audio-btn" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; top: 301px; left: 960px; cursor: pointer; z-index: 10;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+            <audio class="audio-player" src="audio/demo28.mp3" preload="none"></audio>
+            <div class="ellipse160"></div>
+            
+            <img src="../.figma/image/mo5lwku9-wgiock2.png" class="a451Bbe993Dcc94E517C video-thumbnail-28" style="cursor: pointer; z-index: 1; transition: opacity 0.3s ease;" />
+            <video class="video-player-28" src="videos/demo28.mp4.mp4" controls style="display: none;"></video>
+            
+            <!-- Play button overlay -->
+            <div class="play-btn video-play-btn-28">
+                <div class="ellipse191"></div>
+                <img src="../.figma/image/mo5lwku6-d9j5baf.png" class="polygon1" />
+            </div>
+
+            <p class="text3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北宋刻划花，核心在“刀”。匠人以斜刀直入干燥的素胎，刻出莲瓣的宽粗轮廓,刀锋起落之间，线条深浅有致、粗犷有力，构成纹样的主骨架。紧接着，在轮廓内部填饰细密整齐的篦纹。粗线与细线分处不同平面：深刻的主线如筋骨凸起，细密的篦纹如血肉填充。一粗一细，一高一低，层次顿生。光线流转时，两层纹饰交相辉映。碗外壁莲瓣饱满，碗内壁浪涛汹涌，内外呼应。刻划花以刀为笔，在素胎上绘出气势连贯的纹饰长卷，展现了北宋瓷器对刀法精准与空间层次的极致追求。</p>
+            <p class="nextOne" onclick="window.location.href='frame31.html'" style="cursor: pointer;">Next one</p>
+        </div>
+        
+        <!-- Global Fixed Navigation Bar -->
+        <div class="group112 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text4 nav-text">首页</p>
+                    <div class="line50 nav-line"></div>
+                    <p class="text6 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text5 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text7 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text8 nav-text">传承之新</p>
+                    <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" onerror="this.src='../.figma/image/mo5cmalb-ebx9uao.png'" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry animation (sliding from right, typically opened from Frame 31 list)
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.frame28');
+            container.style.transform = 'translateX(100%)';
+            
+            requestAnimationFrame(() => {
+                container.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                container.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Music toggle
+        document.querySelectorAll('.eeee1').forEach(icon => {
+            icon.style.cursor = 'pointer';
+            icon.addEventListener('click', () => {
+                if (icon.style.opacity === '0.5') {
+                    icon.style.opacity = '1';
+                } else {
+                    icon.style.opacity = '0.5';
+                }
+            });
+        });
+
+        // Navigate back to index
+        document.querySelectorAll('.text4').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => {
+                window.location.href = '../home.html';
+            });
+        });
+
+        // Navigate to exhibition gallery
+        document.querySelectorAll('.text6').forEach(p => {
+            p.style.cursor = 'pointer';
+            p.addEventListener('click', () => {
+                window.location.href = 'frame31.html';
+            });
+        });
+
+        // Play button interaction placeholder
+        document.querySelector('.play-btn').addEventListener('click', () => {
+            console.log('Play video functionality clicked');
+        });
+        
+        // Navigation back on scroll
+        let isNavigating = false;
+        window.addEventListener('wheel', (e) => {
+            if (isNavigating) return;
+            
+            const container = document.querySelector('.frame28');
+            
+            // Go back to the main list (Frame 31) when scrolling up/left
+            if (e.deltaY < 0) { 
+                isNavigating = true;
+                container.style.transform = 'translateX(100%)';
+                
+                setTimeout(() => {
+                    window.location.href = 'frame31.html';
+                }, 800);
+            }
+        }, { passive: false });
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+    <script>
+        // 视频播放逻辑
+        document.addEventListener('DOMContentLoaded', () => {
+            const playBtn = document.querySelector('.video-play-btn-28');
+            const thumbnail = document.querySelector('.video-thumbnail-28');
+            const video = document.querySelector('.video-player-28');
+
+            function playVideo() {
+                // 隐藏缩略图和播放按钮
+                if(playBtn) playBtn.style.opacity = '0';
+                if(thumbnail) thumbnail.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if(playBtn) playBtn.style.display = 'none';
+                    if(thumbnail) thumbnail.style.display = 'none';
+                    // 显示视频并播放
+                    if(video) {
+                        video.style.display = 'block';
+                        video.play().catch(e => {
+                            console.log("视频播放失败，请检查视频路径是否正确：", e);
+                        });
+                    }
+                }, 300);
+            }
+
+            if (playBtn && thumbnail && video) {
+                playBtn.addEventListener('click', playVideo);
+                thumbnail.addEventListener('click', playVideo);
+            }
+        });
+    </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    const navAudio = document.getElementById('nav-audio-player');
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        let isPlaying = false;
+        navBtn.addEventListener('click', () => {
+            if(isPlaying) {
+                navAudio.pause();
+                navBtn.src = '../.figma/image/screenshot_1118_12.png';
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+                navBtn.src = '../.figma/image/screenshot_1103_770.png';
+            }
+            isPlaying = !isPlaying;
+        });
+    }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const localBtn = document.querySelector('.audio-btn');
+    const localAudio = document.querySelector('.audio-player');
+    
+    if(localBtn && localAudio) {
+        let isLocalPlaying = false;
+        localBtn.addEventListener('click', () => {
+            if(isLocalPlaying) {
+                localAudio.pause();
+                localBtn.style.stroke = '#888';
+            } else {
+                // Also pause global audio if playing
+                try {
+                    if (window.parent && window.parent.document) {
+                        const globalAudio = window.parent.document.getElementById('global-audio-player');
+                        if (globalAudio && !globalAudio.paused) {
+                            const navBtn = document.getElementById('nav-audio-btn');
+                            globalAudio.pause();
+                            if (navBtn) navBtn.style.opacity = '0.5';
+                        }
+                    }
+                } catch(e) {}
+                
+                localAudio.play().catch(e => console.log('Local audio play failed:', e));
+                localBtn.style.stroke = '#000';
+            }
+            isLocalPlaying = !isLocalPlaying;
+        });
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame 15</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frame15.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="frame15">
+            <img src="../.figma/image/mo4g7jxh-6k31397.png" class="image15" />
+            <img src="../.figma/image/mo4g7jxh-vm5vq1e.png" class="a9E220Ec1A88Ff6Ff432" />
+            <p class="text">
+                品味缠枝纹与莲瓣纹的曼妙风骨<br />
+                追寻它们穿越时光的流转变迁
+            </p>
+            <p class="appreciateTheGracefu">
+                Appreciate the graceful elegance of the<br />
+                intertwined vine and lotus petal patterns,<br />
+                and trace their transformations through time.
+            </p>
+            <p class="text2">向下滑动</p>
+            <img src="../.figma/image/mo4g7jxh-nve8jmx.png" class="yyyy1" />
+            <img src="../.figma/image/mo4g7jxh-kr0o839.png" class="yyyy2" />
+            <p class="theArtistic">The Artistic</p>
+            <p class="beauty">Beauty</p>
+            <p class="of">Of</p>
+            <p class="patterns">Patterns</p>
+            <div class="group128">
+                <p class="seeTimeline">See Timeline</p>
+                <img src="../.figma/image/mo4g7jxf-ae3kg9s.svg" class="arrow5" />
+            </div>
+            <img src="../.figma/image/mo4g7jxf-ae3kg9s.svg" class="arrow6" />
+            
+            <!-- Interactive Image Gallery -->
+            <div class="gallery-container">
+                <img src="../.figma/image/mo4g7jxh-ngxz5mi.png" class="gallery-img active" />
+                <img src="../.figma/image/mo4g7jxh-m2msrsw.png" class="gallery-img" />
+                <img src="../.figma/image/mo4g7jxh-8vf3jx0.png" class="gallery-img" />
+                <img src="../.figma/image/mo4g7jxh-kb7j4bs.png" class="gallery-img" />
+            </div>
+
+            <p class="throughTime">Through Time</p>
+            <p class="aJourney">A (Journey)</p>
+        </div>
+        
+        <!-- Navigation Bar Moved Outside Frame for Absolute Fixing -->
+        <div class="group109 nav-bar">
+            <div class="rectangle314"></div>
+            <div class="autoWrapper nav-content">
+                <div class="nav-left">
+                    <p class="text3 nav-text">首页</p>
+                    <div class="line50 nav-line"></div>
+                    <p class="text4 nav-text">展览馆</p>
+                </div>
+                <div class="nav-right">
+                    <p class="text5 nav-text">纹饰之美</p>
+                    <div class="line51 nav-line"></div>
+                    <p class="text6 nav-text">工艺之蕴</p>
+                    <div class="line52 nav-line"></div>
+                    <p class="text7 nav-text">传承之新</p>
+                    <img src="../.figma/image/screenshot_1118_12.png" id="nav-audio-btn" style="cursor: pointer;" class="eeee1 nav-icon" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // See Timeline click event
+        const seeTimelineBtn = document.querySelector('.seeTimeline');
+        if (seeTimelineBtn) {
+            seeTimelineBtn.style.cursor = 'pointer';
+            seeTimelineBtn.addEventListener('click', () => {
+                // Navigate to Frame 6
+                window.location.href = 'frame6.html';
+            });
+        }
+
+        // Music toggle
+        document.querySelectorAll('.eeee1').forEach(icon => {
+            icon.style.cursor = 'pointer';
+            icon.addEventListener('click', () => {
+                if (icon.style.opacity === '0.5') {
+                    icon.style.opacity = '1';
+                } else {
+                    icon.style.opacity = '0.5';
+                }
+            });
+        });
+
+        // Navigate back to index
+        document.querySelectorAll('.text3').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => {
+                window.location.href = '../home.html';
+            });
+        });
+
+        // Navigate to exhibition gallery
+        document.querySelectorAll('p').forEach(p => {
+            if (p.textContent.trim() === '展览馆') {
+                p.style.cursor = 'pointer';
+                p.addEventListener('click', () => {
+                    window.location.href = 'frame31.html';
+                });
+            }
+        });
+
+        // Interactive Image Gallery Scroll Logic
+        const galleryContainer = document.querySelector('.gallery-container');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        let currentImageIndex = 0;
+        let isScrolling = false;
+
+        if (galleryContainer) {
+            galleryContainer.addEventListener('wheel', (e) => {
+                // Prevent default scrolling when interacting with the gallery
+                e.preventDefault();
+                
+                if (isScrolling) return;
+
+                if (e.deltaY > 0) {
+                    // Scroll down: Next image
+                    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                } else {
+                    // Scroll up: Previous image
+                    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                }
+
+                // Update active classes
+                galleryImages.forEach((img, index) => {
+                    if (index === currentImageIndex) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+
+                // Debounce to prevent rapid skipping
+                isScrolling = true;
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 600); // 600ms matches the CSS transition nicely
+            }, { passive: false });
+        }
+    </script>
+<script>
+    // 全局导航栏跳转逻辑
+    document.querySelectorAll('p').forEach(p => {
+      const text = p.textContent.trim();
+      if (['首页', '展览馆', '纹饰之美', '工艺之蕴', '传承之新', 'The Artistic'].includes(text)) {
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', () => {
+          if (text === '首页') {
+            window.location.href = "../home.html";
+          } else if (text === '展览馆') {
+            window.location.href = 'frame32.html';
+          } else if (text === '纹饰之美') {
+            window.location.href = "../home.html#beauty";
+          } else if (text === '工艺之蕴' || text === 'The Artistic') {
+            window.location.href = "../home.html#craftsmanship";
+          } else if (text === '传承之新') {
+            window.location.href = "../home.html#new";
+          }
+        });
+      }
+    });
+</script>
+
+<audio id="nav-audio-player" src="audio/demo1.mp3" loop preload="auto"></audio></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const navBtn = document.getElementById('nav-audio-btn');
+    let navAudio = null;
+
+    // Try to get audio from parent iframe
+    try {
+        if (window.parent && window.parent.document) {
+            navAudio = window.parent.document.getElementById('global-audio-player');
+        }
+    } catch(e) {}
+    
+    // Fallback if not inside iframe
+    if (!navAudio) {
+        navAudio = document.getElementById('nav-audio-player');
+    }
+
+    if(navBtn && navAudio) {
+        navAudio.volume = 0.5;
+        
+        const updateVisuals = () => {
+            if (!navAudio.paused) {
+                navBtn.style.opacity = '1';
+            } else {
+                navBtn.style.opacity = '0.5';
+            }
+        };
+        
+        // Initial state
+        navBtn.src = '../.figma/image/screenshot_1103_603.png';
+        updateVisuals();
+
+        navBtn.addEventListener('click', () => {
+            if(!navAudio.paused) {
+                navAudio.pause();
+            } else {
+                navAudio.play().catch(e => console.log('Nav audio play failed:', e));
+            }
+            updateVisuals();
+        });
+        
+        // Listen to events in case parent or other frames change it
+        navAudio.addEventListener('play', updateVisuals);
+        navAudio.addEventListener('pause', updateVisuals);
+        
+        // Clean up listeners when page unloads to prevent memory leaks in parent
+        window.addEventListener('unload', () => {
+            navAudio.removeEventListener('play', updateVisuals);
+            navAudio.removeEventListener('pause', updateVisuals);
+        });
+    }
+});
+</script>
+</body>
+</html>
